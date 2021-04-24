@@ -18,4 +18,12 @@ router.get("/", async (req, res) => {
     res.status(createUser.status).send(createUser.info)
 })
 
+router.delete("/:id", async (req, res) => {
+    console.log(req.params)
+    const deleteUser = await user.delete(req.params)
+    res.status(deleteUser.status).send({
+        info: deleteUser.info
+    })
+})
+
 export default router;
