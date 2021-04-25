@@ -10,6 +10,7 @@ class Route {
 
 const manageRoute = new Route('/manage', user)
 const studentRoute = new Route('/student', auth)
+const companyRoute = new Route('/company', auth)
 
 const router = [manageRoute, studentRoute]
 
