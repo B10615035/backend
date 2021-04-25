@@ -1,4 +1,5 @@
 import user from '../controllers/user'
+import auth from '../controllers/auth'
 
 class Route {
     constructor(prefix, router) {
@@ -7,8 +8,9 @@ class Route {
     }
 }
 
-const manageRoute = new Route('/181229424893bb65d94a74c2132b8b9e5adfe851464fdb5cb9f49e8a8204be7b', user)
+const manageRoute = new Route('/manage', user)
+const studentRoute = new Route('/student', auth)
 
-const router = [manageRoute]
+const router = [manageRoute, studentRoute]
 
 export default router
