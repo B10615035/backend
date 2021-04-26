@@ -18,6 +18,7 @@ const studentSchema = new Schema({
         type:String,
         require: true,
     },
+    company:[String],
     last_login: Date,
     created_at: Date,
     updated_at: Date,

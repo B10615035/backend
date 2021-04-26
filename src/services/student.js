@@ -27,11 +27,18 @@ class studentService {
     }
 
     async delete(id){
-        const findID = await this.usstudenter.findOne(id)
+        const findID = await this.student.findOne(id)
         if(!findID)
             return new HttpStatus(400, 'This ID dose not exits.')
         await this.student.findOneAndRemove(id)
         return new HttpStatus(200, 'Delete student success.')
+    }
+
+    async update(id, data){
+        const findID = await this.student.findOneAndUpdate(id,{...data, updated_at:Date.now()})
+        if(!findID)
+            return new HttpStatus(400, 'This student dose not exits.')
+        return new HttpStatus(200, 'Update student success.')
     }
 }
 
