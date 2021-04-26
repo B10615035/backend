@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import HttpStatus from '../utils/HttpStatus'
 
 async function verifyToken(token, secret) {
     return new Promise((resolve, reject) => {
@@ -11,7 +10,7 @@ async function verifyToken(token, secret) {
     });
 }
 
-const authMiddleware = async (req, res) => {
+const authMiddleware = async (req, res, next) => {
     const token = req.headers.authorization
     if (!token)
         res.status(400).send({
@@ -25,7 +24,6 @@ const authMiddleware = async (req, res) => {
                 info: 'invalid token'
             })
         }
-
     }
     next()
 }

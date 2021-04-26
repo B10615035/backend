@@ -1,6 +1,6 @@
 import {model, Schema} from "mongoose"
 
-const userSchems = new Schema({
+const studentSchema = new Schema({
     name:{
         type:String,
         require: true,
@@ -23,6 +23,6 @@ const userSchems = new Schema({
     updated_at: Date,
 })
 
-const userModel = model('user', userSchems)
+const studentModel = model('user', studentSchema)
 
-export default userModel
+export default studentModel

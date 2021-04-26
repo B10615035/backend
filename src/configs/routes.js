@@ -1,5 +1,6 @@
-import user from '../controllers/user'
-import auth from '../controllers/auth'
+import student from '../controllers/student'
+import company from '../controllers/company'
+import manage from '../controllers/manage'
 
 class Route {
     constructor(prefix, router) {
@@ -8,10 +9,10 @@ class Route {
     }
 }
 
-const manageRoute = new Route('/manage', user)
-const studentRoute = new Route('/student', auth)
-const companyRoute = new Route('/company', auth)
+const manageRoute = new Route('/manage', manage)
+const studentRoute = new Route('/student', student)
+const companyRoute = new Route('/company', company)
 
-const router = [manageRoute, studentRoute]
+const router = [manageRoute, studentRoute, companyRoute]
 
 export default router

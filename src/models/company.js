@@ -10,6 +10,6 @@ const companySchema = new Schema({
     updated_at: Date,
 })
 
-const companyModel = model('compnay', companySchema)
+const companyModel = model('company', companySchema)
 
 export default companyModel
