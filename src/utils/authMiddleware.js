@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-async function verifyToken(token, secret) {
+const verifyToken = async (token, secret) => {
     return new Promise((resolve, reject) => {
         jwt.verify(token, secret, (err, decoded) => {
             if (err)

@@ -16,7 +16,7 @@ class authService {
         if (!findUser)
             return new HttpStatus(400, 'This student is not exits.')
         
-        const token = jwt.sign({id:data.id}, this.SECRET, {expiresIn: '3600s'})
+        const token = jwt.sign({id:data.id}, this.SECRET, {expiresIn: '30s'})
 
         return new HttpStatus(200, token)
     }
@@ -26,7 +26,7 @@ class authService {
         if (!findUser)
             return new HttpStatus(400, 'This company is not exits.')
         
-        const token = jwt.sign({id:companyIndex(data.id)}, this.SECRET, {expiresIn: '3600s'})
+        const token = jwt.sign({id:companyIndex(data.id)}, this.SECRET, {expiresIn: '30s'})
 
         return new HttpStatus(200, token)
     }
@@ -34,12 +34,35 @@ class authService {
     async manageLogin(data) {
         console.log(data)
         if(data.name == "admin" && data.password == "NTUST12345"){
-            const token = jwt.sign({name:data.name, password: data.password}, this.SECRET, {expiresIn: '3600s'})
+            const token = jwt.sign({name:data.name, password: data.password}, this.SECRET, {expiresIn: '30s'})
             return new HttpStatus(200, token)
         }
         else{
             return new HttpStatus(400, 'This manager is not exits.')
         }
+    }
+
+    async verifyToken(token, secret){
+        return new Promise((resolve, reject) => {
+            jwt.verify(token, secret, (err, decoded) => {
+                if (err)
+                    reject(err);
+                resolve(decoded);
+            });
+        });
+    }
+
+    async checkToken(data) {
+        if(data.token == "login")
+            return new HttpStatus(200, true)
+
+        try {
+            await this.verifyToken(data.token.replace('Bearer ', ''), "secret")
+        } catch (error) {
+            console.log(error)
+            return new HttpStatus(400, false)
+        }
+        return new HttpStatus(200, true)
     }
 }
 
