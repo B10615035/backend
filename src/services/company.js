@@ -37,7 +37,7 @@ class comapnyService {
             if(isCompanyInStudent)
                 companyInStudent.push(student.name)
         })
-        return new HttpStatus(200, companyInStudent)
+        return new HttpStatus(200, {findCompany, companyInStudent})
     }
 
     async update(id, data){

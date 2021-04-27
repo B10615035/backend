@@ -23,4 +23,11 @@ router.get("/:id", authMiddleware, async (req, res) => {
     })
 })
 
+router.put("/:id", authMiddleware, async (req, res) => {
+    const updateStudent = await company.update(req.params, req.body)
+    res.status(updateStudent.status).send({
+        info: updateStudent.info
+    })
+})
+
 export default router
