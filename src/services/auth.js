@@ -16,7 +16,7 @@ class authService {
         if (!findUser)
             return new HttpStatus(400, 'This student is not exits.')
         
-        const token = jwt.sign({id:data.id}, this.SECRET, {expiresIn: '30s'})
+        const token = jwt.sign({id:data.id}, this.SECRET, {expiresIn: '1800s'})
 
         return new HttpStatus(200, token)
     }
@@ -26,7 +26,7 @@ class authService {
         if (!findUser)
             return new HttpStatus(400, 'This company is not exits.')
         
-        const token = jwt.sign({id:companyIndex(data.id)}, this.SECRET, {expiresIn: '30s'})
+        const token = jwt.sign({id:companyIndex(data.name)}, this.SECRET, {expiresIn: '1800s'})
 
         return new HttpStatus(200, token)
     }
@@ -34,7 +34,7 @@ class authService {
     async manageLogin(data) {
         console.log(data)
         if(data.name == "admin" && data.password == "NTUST12345"){
-            const token = jwt.sign({name:data.name, password: data.password}, this.SECRET, {expiresIn: '30s'})
+            const token = jwt.sign({name:data.name, password: data.password}, this.SECRET, {expiresIn: '1800s'})
             return new HttpStatus(200, token)
         }
         else{

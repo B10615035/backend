@@ -1,10 +1,12 @@
 import HttpStatus from '../utils/HttpStatus'
 import companyModel from '../models/company'
+import studentModel from '../models/student'
 import {companyName} from '../utils/companyIndex'
 
 class comapnyService {
     constructor() {
         this.company = companyModel
+        this.student = studentModel
     }
 
     async create(data) {
@@ -23,10 +25,27 @@ class comapnyService {
     }
 
     async findOne(data){
-        const findCompany = await this.company.findOne({name: companyName(data.id)})
+        const name = companyName(data.id)
+        const findCompany = await this.company.findOne({name: name})
         if(!findCompany)
             return new HttpStatus(400, 'This company is not exits.')
-        return new HttpStatus(200, findCompany)
+
+        const studentList = await this.student.find()
+        var companyInStudent = []
+        studentList.forEach(student => {
+            const isCompanyInStudent = student.company.find(company => company === name)
+            if(isCompanyInStudent)
+                companyInStudent.push(student.name)
+        })
+        return new HttpStatus(200, companyInStudent)
+    }
+
+    async update(id, data){
+        const name = companyName(id.id)
+        const findID = await this.company.findOneAndUpdate({name: name},{...data, updated_at:Date.now()})
+        if(!findID)
+            return new HttpStatus(400, 'This company dose not exits.')
+        return new HttpStatus(200, 'Update company success.')
     }
 }
 

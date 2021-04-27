@@ -14,7 +14,7 @@ const studentSchema = new Schema({
         type:String,
         require: true,
     },
-    phone:{
+    school:{
         type:String,
         require: true,
     },
