@@ -42,6 +42,7 @@ class comapnyService {
 
     async update(id, data){
         const name = companyName(id.id)
+        console.log(name)
         const findID = await this.company.findOneAndUpdate({name: name},{...data, updated_at:Date.now()})
         if(!findID)
             return new HttpStatus(400, 'This company dose not exits.')

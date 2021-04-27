@@ -49,4 +49,11 @@ router.get("/company", authMiddleware, async (req, res) => {
     res.status(getCompany.status).send(getCompany.info)
 })
 
+router.put("/company/:id", authMiddleware, async (req, res) => {
+    const updateStudent = await company.update(req.params, req.body)
+    res.status(updateStudent.status).send({
+        info: updateStudent.info
+    })
+})
+
 export default router
