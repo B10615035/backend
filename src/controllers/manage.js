@@ -65,4 +65,9 @@ router.put("/company/:id", authMiddleware, async (req, res) => {
     })
 })
 
+router.get("/log", authMiddleware, async (req, res) => {
+    const logData = await log.find()
+    res.status(200).send(logData)
+})
+
 export default router
