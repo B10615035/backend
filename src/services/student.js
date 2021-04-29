@@ -38,7 +38,7 @@ class studentService {
         const findID = await this.student.findOneAndUpdate(id,{...data, updated_at:Date.now()})
         if(!findID)
             return new HttpStatus(400, 'This student dose not exits.')
-        return new HttpStatus(200, 'Update student success.')
+        return new HttpStatus(200, '提交成功')
     }
 }
 
