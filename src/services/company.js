@@ -40,7 +40,7 @@ class comapnyService {
 
         const studentList = await this.student.find()
 
-        studentList = studentList.sort((a, b) => {
+        var studentInCompany = studentList.sort((a, b) => {
             if (a.id > b.id)
                 return -1
             else
@@ -50,7 +50,7 @@ class comapnyService {
 
         return new HttpStatus(200, {
             findCompany,
-            studentList
+            studentInCompany
         })
     }
 
