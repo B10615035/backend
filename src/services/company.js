@@ -41,7 +41,7 @@ class comapnyService {
         var studentList = await this.student.find()
 
         studentList = studentList.sort((a, b) => {
-            if (a.id > b.id)
+            if (a.id < b.id)
                 return -1
             else
                 return 0
