@@ -46,7 +46,6 @@ class comapnyService {
             else
                 return 0
         })
-        console.log(studentList)
 
         return new HttpStatus(200, {
             findCompany,
