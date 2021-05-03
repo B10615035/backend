@@ -7,7 +7,13 @@ class studentService {
     }
 
     async findAll(){
-        const student = await this.student.find()
+        var student = await this.student.find()
+        student = student.sort((a, b) => {
+            if (a.id < b.id)
+                return -1
+            else
+                return 0
+        })
         return new HttpStatus(200, student)
     }
 
