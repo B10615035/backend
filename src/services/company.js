@@ -35,7 +35,7 @@ class comapnyService {
         studentList.forEach(student => {
             const isCompanyInStudent = student.company.find(company => company === name)
             if(isCompanyInStudent)
-                companyInStudent.push(student.name)
+                companyInStudent.push({name:student.name, id:student.id})
         })
         return new HttpStatus(200, {findCompany, companyInStudent})
     }
@@ -46,7 +46,7 @@ class comapnyService {
         const findID = await this.company.findOneAndUpdate({name: name},{...data, updated_at:Date.now()})
         if(!findID)
             return new HttpStatus(400, 'This company dose not exits.')
-        return new HttpStatus(200, 'Update company success.')
+        return new HttpStatus(200, '提交成功')
     }
 }
 
