@@ -38,9 +38,9 @@ class comapnyService {
         if (!findCompany)
             return new HttpStatus(400, 'This company is not exits.')
 
-        const studentList = await this.student.find()
+        var studentList = await this.student.find()
 
-        var studentInCompany = studentList.sort((a, b) => {
+        studentList = studentList.sort((a, b) => {
             if (a.id > b.id)
                 return -1
             else
@@ -50,7 +50,7 @@ class comapnyService {
 
         return new HttpStatus(200, {
             findCompany,
-            studentInCompany
+            studentList
         })
     }
 
