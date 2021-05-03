@@ -31,13 +31,7 @@ class comapnyService {
             return new HttpStatus(400, 'This company is not exits.')
 
         const studentList = await this.student.find()
-        var companyInStudent = []
-        studentList.forEach(student => {
-            const isCompanyInStudent = student.company.find(company => company === name)
-            if(isCompanyInStudent)
-                companyInStudent.push({name:student.name, id:student.id})
-        })
-        return new HttpStatus(200, {findCompany, companyInStudent})
+        return new HttpStatus(200, {findCompany, studentList})
     }
 
     async update(id, data){
