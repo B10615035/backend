@@ -11,10 +11,10 @@ class Route {
 }
 
 const manageRoute = new Route('/manage', manage)
-// const studentRoute = new Route('/student', student)
+const studentRoute = new Route('/student', student)
 const companyRoute = new Route('/company', company)
 const authRoute = new Route('/auth', auth)
 
-const router = [manageRoute, companyRoute, authRoute]
+const router = [manageRoute, studentRoute, companyRoute, authRoute]
 
 export default router
