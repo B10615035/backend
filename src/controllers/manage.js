@@ -32,6 +32,16 @@ router.get('/schedule/stage_one', async (req, res) => {
         stageOne_schedule[companyName(i)] = [[], [], [], [], [], [], [], []]
 
     var studentInCompany = []
+    var companyWeight = new Map
+
+    companyWeight["中華電信"] = 10
+    companyWeight["台達電子"] = 16
+    companyWeight["邑富"] = 10
+    companyWeight["利凌企業"] = 29
+    companyWeight["英業達"] = 18
+    companyWeight["研揚科技"] = 30
+    companyWeight["鈊象電子"] = 13
+    companyWeight["緯創資通"] = 19
     
     // for(let stu in getStudent){
     //     var temp = {name: getStudent[stu].name, company: []}
@@ -82,6 +92,14 @@ router.get('/schedule/stage_one', async (req, res) => {
 
     for (let stu in studentInCompany) {
         var sch_index = []
+
+        studentInCompany[stu].company = studentInCompany[stu].company.sort((a, b) => {
+            if (companyWeight[a] < companyWeight[b])
+                return -1
+            else
+                return 0
+        })
+
         for (let com in studentInCompany[stu].company)
             for (let j = 0; j < 8; j++) {
                 if (!sch_index.includes(j) && stageOne_schedule[studentInCompany[stu].company[com]][j].length < 3) {
