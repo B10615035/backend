@@ -111,6 +111,11 @@ router.get('/schedule/stage_one', async (req, res) => {
                     break
                 }
             }
+        
+        await student.update({name: studentInCompany[stu].name}, {stage_one: studentInCompany[stu].company, stage_one_index: sch_index})
+        for(let i = 0; i < 8; i++){
+            await company.update({id: i}, {stage_one: stageOne_schedule[companyName(i)]})
+        }
     }
 
     console.log(stageOne_schedule)
