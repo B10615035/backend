@@ -103,7 +103,7 @@ router.get('/schedule/stage_one', async (req, res) => {
         for (let com in studentInCompany[stu].company)
             for (let j = 0; j < 8; j++) {
                 var limit = 3
-                if(studentInCompany[stu].company[com] == "利凌企業" || studentInCompany[stu].company[com] == "研揚科技")
+                if(j == 0 && studentInCompany[stu].company[com] == "研揚科技")
                     limit = 4
                 if (!sch_index.includes(j) && stageOne_schedule[studentInCompany[stu].company[com]][j].length < limit) {
                     stageOne_schedule[studentInCompany[stu].company[com]][j].push(studentInCompany[stu].name)
