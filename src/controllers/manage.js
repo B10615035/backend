@@ -23,7 +23,6 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/schedule/stage_one', async (req, res) => {
-    console.log("update shcedule")
     const getCompany = (await company.findAll()).info
     const getStudent = (await student.findAll()).info
 
