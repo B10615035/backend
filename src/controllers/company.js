@@ -6,6 +6,7 @@ import authMiddleware from '../utils/authMiddleware'
 import authService from '../services/auth'
 import logModel from '../models/log'
 import {companyIndex, companyName} from '../utils/companyIndex'
+import {schedule} from '../utils/schedule'
 
 const router = Router()
 const company = new companyService()
@@ -17,6 +18,19 @@ router.post('/login', async (req, res) => {
     await log.create({identity:"company",name:req.body.name, id: req.body.id,action:'login', updated_at:Date.now()})
     res.status(authStudent.status).send({
         info: authStudent.info
+    })
+})
+
+router.get("/schedule", authMiddleware, async (req, res) => {
+    res.status(200).send({
+        info: schedule
+    })
+})
+
+router.put("/willing", authMiddleware, async (req, res) => {
+    const updateWilling = await company.update(req.params, req.body)
+    res.status(updateWilling.status).send({
+        info: updateWilling.info
     })
 })
 

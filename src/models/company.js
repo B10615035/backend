@@ -6,6 +6,9 @@ const companySchema = new Schema({
         require: true,
     },
     students:[String],
+    stage_one:[Array],
+    willing_name:[String],
+    willing_order:[Number],
     last_login: Date,
     updated_at: Date,
 })

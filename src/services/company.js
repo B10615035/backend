@@ -55,7 +55,6 @@ class comapnyService {
 
     async update(id, data) {
         const name = companyName(id.id)
-        console.log(name)
         const findID = await this.company.findOneAndUpdate({
             name: name
         }, {

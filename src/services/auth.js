@@ -34,7 +34,7 @@ class authService {
     async manageLogin(data) {
         console.log(data)
         if(data.name == "admin" && data.password == "NTUST12345"){
-            const token = jwt.sign({name:data.name, password: data.password}, this.SECRET, {expiresIn: '1800s'})
+            const token = jwt.sign({name:data.name, password: data.password}, this.SECRET, {expiresIn: '180000s'})
             return new HttpStatus(200, token)
         }
         else{
