@@ -22,6 +22,37 @@ router.post('/login', async (req, res) => {
     })
 })
 
+router.get('/schedule/test', async (req, res) => {
+    const getCompany = (await company.findAll()).info
+    const getStudent = (await student.findAll()).info
+
+    var stageOne_schedule = new Map
+
+    for(let i = 0; i < 8; i++)
+        stageOne_schedule[companyName(i)] = [[], [], [], [], [], [], [], []]
+
+    var studentInCompany = []
+
+    for (let stu in getStudent) {
+        var temp = {
+            name: getStudent[stu].name,
+            company: []
+        }
+        for (let i in getStudent[stu].company) {
+            for (let com in getCompany) {
+                if (getStudent[stu].company[i] == getCompany[com].name && !getCompany[com].students.includes(getStudent[stu].name)) {
+                    temp.company.push(getCompany[com].name)
+                }
+            }
+        }
+        studentInCompany.push(temp)
+    }
+
+    res.status(200).send({
+        info: stageOne_schedule
+    })
+})
+
 router.get('/schedule/stage_one', async (req, res) => {
     const getCompany = (await company.findAll()).info
     const getStudent = (await student.findAll()).info
@@ -124,6 +155,8 @@ router.get('/schedule/stage_one', async (req, res) => {
         info: stageOne_schedule
     })
 })
+
+
 
 router.post("/student/", authMiddleware, async (req, res) => {
     const createUser = await student.create(req.body)
