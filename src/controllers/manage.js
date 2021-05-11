@@ -49,7 +49,7 @@ router.get('/schedule/test', async (req, res) => {
     }
 
     res.status(200).send({
-        info: stageOne_schedule
+        info: studentInCompany
     })
 })
 
