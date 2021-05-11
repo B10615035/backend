@@ -48,8 +48,25 @@ router.get('/schedule/test', async (req, res) => {
         studentInCompany.push(temp)
     }
 
+    var companyInStudent = []
+
+    for(let com in getCompany){
+        var temp = {
+            name: getCompany[com].name,
+            student: []
+        }
+
+        for(let i in getCompany[com].students){
+            for(let stu in getStudent){
+                if(getCompany[com].students[i] == getStudent[stu].name && !getStudent[stu].company.includes(getCompany[com].name))
+                    temp.students.push(getStudent[stu].name)
+            }
+        }
+        companyInStudent.push(temp)
+    }
+
     res.status(200).send({
-        info: studentInCompany
+        info: companyInStudent
     })
 })
 
