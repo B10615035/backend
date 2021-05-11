@@ -60,8 +60,25 @@ router.get('/schedule/test', async (req, res) => {
         companyInStudent.push(temp)
     }
 
+    var companyBeChosen = new Map
+
+    companyBeChosen["中華電信"] = []
+    companyBeChosen["台達電子"] = []
+    companyBeChosen["邑富"] = []
+    companyBeChosen["利凌企業"] = []
+    companyBeChosen["英業達"] = []
+    companyBeChosen["研揚科技"] = []
+    companyBeChosen["鈊象電子"] = []
+    companyBeChosen["緯創資通"] = []
+
+    for (let stu in getStudent) {
+        for (let i in getStudent[stu].company) {
+            companyBeChosen[getStudent[stu].company[i]].push(getStudent[stu].name)
+        }
+    }
+
     res.status(200).send({
-        info: companyInStudent
+        info: companyBeChosen
     })
 })
 
