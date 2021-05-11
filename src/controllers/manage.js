@@ -26,11 +26,6 @@ router.get('/schedule/test', async (req, res) => {
     const getCompany = (await company.findAll()).info
     const getStudent = (await student.findAll()).info
 
-    var stageOne_schedule = new Map
-
-    for(let i = 0; i < 8; i++)
-        stageOne_schedule[companyName(i)] = [[], [], [], [], [], [], [], []]
-
     var studentInCompany = []
 
     for (let stu in getStudent) {
@@ -59,7 +54,7 @@ router.get('/schedule/test', async (req, res) => {
         for(let i in getCompany[com].students){
             for(let stu in getStudent){
                 if(getCompany[com].students[i] == getStudent[stu].name && !getStudent[stu].company.includes(getCompany[com].name))
-                    temp.students.push(getStudent[stu].name)
+                    temp.student.push(getStudent[stu].name)
             }
         }
         companyInStudent.push(temp)
