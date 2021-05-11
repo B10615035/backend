@@ -26,6 +26,13 @@ router.get("/schedule", authMiddleware, async (req, res) => {
     })
 })
 
+router.put("/willing/:id", authMiddleware, async (req, res) => {
+    const updateWilling = await student.update(req.params, req.body)
+    res.status(updateWilling.status).send({
+        info: updateWilling.info
+    })
+})
+
 router.get("/:id", authMiddleware, async (req, res) => {
     const getStudent = await student.findOne(req.params)
     await log.create({identity:"student",name:"", id: req.params.id,action:'get', updated_at:Date.now()})

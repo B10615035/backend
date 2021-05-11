@@ -27,7 +27,7 @@ router.get("/schedule", authMiddleware, async (req, res) => {
     })
 })
 
-router.put("/willing", authMiddleware, async (req, res) => {
+router.put("/willing/:id", authMiddleware, async (req, res) => {
     const updateWilling = await company.update(req.params, req.body)
     res.status(updateWilling.status).send({
         info: updateWilling.info

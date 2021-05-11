@@ -8,6 +8,7 @@ const companySchema = new Schema({
     students:[String],
     stage_one:[Array],
     willing_name:[String],
+    willing_id:[String],
     willing_order:[Number],
     last_login: Date,
     updated_at: Date,
