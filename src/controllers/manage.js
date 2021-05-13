@@ -99,11 +99,11 @@ router.get('/schedule/stage_one', async (req, res) => {
     var studentInCompany = []
     var companyWeight = new Map
 
-    companyWeight["中華電信"] = 1
-    companyWeight["台達電子"] = 2
-    companyWeight["邑富"] = 4
-    companyWeight["利凌企業"] = 3
-    companyWeight["英業達"] = 5
+    companyWeight["中華電信"] = 11
+    companyWeight["台達電子"] = 12
+    companyWeight["邑富"] = 14
+    companyWeight["利凌企業"] = 13
+    companyWeight["英業達"] = 15
     companyWeight["研揚IOT"] = 8
     companyWeight["鈊象電子"] = 6
     companyWeight["緯創資通"] = 7
@@ -187,6 +187,88 @@ router.get('/schedule/stage_one', async (req, res) => {
 
             for (let j = start; j < end; j++) {
                 if (!sch_index.includes(j) && stageOne_schedule[studentInCompany[stu].company[com]][j] == "") {
+                    if (studentInCompany[stu].company[com] == "鈊象電子"){
+                        if(studentInCompany[stu].company == "吳紹擎"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][0] += studentInCompany[stu].name
+                            sch_index.push(0)
+                        }
+                        else if(studentInCompany[stu].company == "賴俊霖"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][1] += studentInCompany[stu].name
+                            stageOne_schedule[studentInCompany[stu].company[com]][6] += studentInCompany[stu].name
+                            sch_index.push(1)
+                            sch_index.push(6)
+                        }
+                        else if(studentInCompany[stu].company == "温承勲"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][2] += studentInCompany[stu].name
+                            sch_index.push(2)
+                        }
+                        else if(studentInCompany[stu].company == "彭浩峰"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][3] += studentInCompany[stu].name
+                            sch_index.push(3)
+                        }
+                        else if(studentInCompany[stu].company == "鐘良軒"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][2] += studentInCompany[stu].name
+                            stageOne_schedule[studentInCompany[stu].company[com]][4] += studentInCompany[stu].name
+                            sch_index.push(2)
+                            sch_index.push(4)
+                        }
+                        else if(studentInCompany[stu].company == "柯元豪"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][5] += studentInCompany[stu].name
+                            stageOne_schedule[studentInCompany[stu].company[com]][0] += studentInCompany[stu].name
+                            sch_index.push(0)
+                            sch_index.push(5)
+                        }
+                        else if(studentInCompany[stu].company == "黃柏翰"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][6] += studentInCompany[stu].name
+                            sch_index.push(6)
+                        }
+                        else if(studentInCompany[stu].company == "許林斌"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][7] += studentInCompany[stu].name
+                            sch_index.push(7)
+                        }
+                        else if(studentInCompany[stu].company == "陳俊霖"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][8] += studentInCompany[stu].name
+                            sch_index.push(8)
+                        }
+                        else if(studentInCompany[stu].company == "易可鈞"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][9] += studentInCompany[stu].name
+                            sch_index.push(9)
+                        }
+                        else if(studentInCompany[stu].company == "陳柏翰"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][5] += studentInCompany[stu].name
+                            stageOne_schedule[studentInCompany[stu].company[com]][10] += studentInCompany[stu].name
+                            sch_index.push(5)
+                            sch_index.push(10)
+                        }
+                        else if(studentInCompany[stu].company == "童暘修"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][1] += studentInCompany[stu].name
+                            sch_index.push(1)
+                        }
+                        else if(studentInCompany[stu].company == "徐貫珉"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][3] += studentInCompany[stu].name
+                            stageOne_schedule[studentInCompany[stu].company[com]][9] += studentInCompany[stu].name
+                            sch_index.push(3)
+                            sch_index.push(9)
+                        }
+                        else if(studentInCompany[stu].company == "章聰誠"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][4] += studentInCompany[stu].name
+                            sch_index.push(4)
+                        }
+                        else if(studentInCompany[stu].company == "胡鎮東"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][6] += studentInCompany[stu].name
+                            sch_index.push(6)
+                        }
+                        else if(studentInCompany[stu].company == "陳昕璇"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][8] += studentInCompany[stu].name
+                            sch_index.push(8)
+                        }
+                        else if(studentInCompany[stu].company == "劉佑晉"){
+                            stageOne_schedule[studentInCompany[stu].company[com]][10] += studentInCompany[stu].name
+                            sch_index.push(10)
+                        }
+                        continue
+                    }
+
                     stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                     sch_index.push(j)
 
