@@ -187,7 +187,7 @@ router.get('/schedule/stage_one', async (req, res) => {
 
             if (studentInCompany[stu].company[com] == "鈊象電子") {
                 if (studentInCompany[stu].name == "吳紹擎") {
-                    stageOne_schedule[studentInCompany[stu].company[com]][0] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][0] += "," + studentInCompany[stu].name
                     sch_index.push(0)
                 } else if (studentInCompany[stu].name == "賴俊霖") {
                     stageOne_schedule[studentInCompany[stu].company[com]][1] += studentInCompany[stu].name
@@ -201,8 +201,8 @@ router.get('/schedule/stage_one', async (req, res) => {
                     stageOne_schedule[studentInCompany[stu].company[com]][3] += studentInCompany[stu].name
                     sch_index.push(3)
                 } else if (studentInCompany[stu].name == "鐘良軒") {
-                    stageOne_schedule[studentInCompany[stu].company[com]][2] += studentInCompany[stu].name
-                    stageOne_schedule[studentInCompany[stu].company[com]][4] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][2] += "," + studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][4] += "," + studentInCompany[stu].name
                     sch_index.push(2)
                     sch_index.push(4)
                 } else if (studentInCompany[stu].name == "柯元豪") {
@@ -214,7 +214,7 @@ router.get('/schedule/stage_one', async (req, res) => {
                     stageOne_schedule[studentInCompany[stu].company[com]][6] += studentInCompany[stu].name
                     sch_index.push(6)
                 } else if (studentInCompany[stu].name == "許林斌") {
-                    stageOne_schedule[studentInCompany[stu].company[com]][7] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][7] += "," + studentInCompany[stu].name
                     sch_index.push(7)
                 } else if (studentInCompany[stu].name == "陳俊霖") {
                     stageOne_schedule[studentInCompany[stu].company[com]][8] += studentInCompany[stu].name
@@ -223,26 +223,26 @@ router.get('/schedule/stage_one', async (req, res) => {
                     stageOne_schedule[studentInCompany[stu].company[com]][9] += studentInCompany[stu].name
                     sch_index.push(9)
                 } else if (studentInCompany[stu].name == "陳柏翰") {
-                    stageOne_schedule[studentInCompany[stu].company[com]][5] += studentInCompany[stu].name
-                    stageOne_schedule[studentInCompany[stu].company[com]][10] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][5] += "," + studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][10] += "," + studentInCompany[stu].name
                     sch_index.push(5)
                     sch_index.push(10)
                 } else if (studentInCompany[stu].name == "童暘修") {
-                    stageOne_schedule[studentInCompany[stu].company[com]][1] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][1] += "," + studentInCompany[stu].name
                     sch_index.push(1)
                 } else if (studentInCompany[stu].name == "徐貫珉") {
-                    stageOne_schedule[studentInCompany[stu].company[com]][3] += studentInCompany[stu].name
-                    stageOne_schedule[studentInCompany[stu].company[com]][9] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][3] += "," + studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][9] += "," + studentInCompany[stu].name
                     sch_index.push(3)
                     sch_index.push(9)
                 } else if (studentInCompany[stu].name == "章聰誠") {
                     stageOne_schedule[studentInCompany[stu].company[com]][4] += studentInCompany[stu].name
                     sch_index.push(4)
                 } else if (studentInCompany[stu].name == "胡鎮東") {
-                    stageOne_schedule[studentInCompany[stu].company[com]][6] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][6] += "," + studentInCompany[stu].name
                     sch_index.push(6)
                 } else if (studentInCompany[stu].name == "陳昕璇") {
-                    stageOne_schedule[studentInCompany[stu].company[com]][8] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][8] += "," + studentInCompany[stu].name
                     sch_index.push(8)
                 } else if (studentInCompany[stu].name == "劉佑晉") {
                     stageOne_schedule[studentInCompany[stu].company[com]][10] += studentInCompany[stu].name
