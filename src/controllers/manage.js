@@ -99,16 +99,16 @@ router.get('/schedule/stage_one', async (req, res) => {
     var studentInCompany = []
     var companyWeight = new Map
 
-    companyWeight["中華電信"] = 10
-    companyWeight["台達電子"] = 16
-    companyWeight["邑富"] = 10
-    companyWeight["利凌企業"] = 29
-    companyWeight["英業達"] = 18
-    companyWeight["研揚IOT"] = 15
-    companyWeight["鈊象電子"] = 13
-    companyWeight["緯創資通"] = 19
-    companyWeight["研揚SDD1"] = 14
-    companyWeight["研揚SDD2"] = 14
+    companyWeight["中華電信"] = 1
+    companyWeight["台達電子"] = 2
+    companyWeight["邑富"] = 4
+    companyWeight["利凌企業"] = 3
+    companyWeight["英業達"] = 5
+    companyWeight["研揚IOT"] = 8
+    companyWeight["鈊象電子"] = 6
+    companyWeight["緯創資通"] = 7
+    companyWeight["研揚SDD1"] = 9
+    companyWeight["研揚SDD2"] = 9
     
     // for(let stu in getStudent){
     //     var temp = {name: getStudent[stu].name, company: []}
@@ -150,22 +150,22 @@ router.get('/schedule/stage_one', async (req, res) => {
         studentInCompany.push(temp)
     }
 
-    // studentInCompany = studentInCompany.sort((a, b) => {
-    //     if (a.company.length > b.company.length)
-    //         return -1
-    //     else
-    //         return 0
-    // })
+    studentInCompany = studentInCompany.sort((a, b) => {
+        if (a.company.length > b.company.length)
+            return -1
+        else
+            return 0
+    })
 
     for (let stu in studentInCompany) {
         var sch_index = []
 
-        // studentInCompany[stu].company = studentInCompany[stu].company.sort((a, b) => {
-        //     if (companyWeight[a] < companyWeight[b])
-        //         return -1
-        //     else
-        //         return 0
-        // })
+        studentInCompany[stu].company = studentInCompany[stu].company.sort((a, b) => {
+            if (companyWeight[a] < companyWeight[b])
+                return -1
+            else
+                return 0
+        })
 
         for (let com in studentInCompany[stu].company) {
             var start = 0;
