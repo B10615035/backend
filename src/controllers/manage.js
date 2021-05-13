@@ -180,6 +180,11 @@ router.get('/schedule/stage_one', async (req, res) => {
                 if (!sch_index.includes(j) && stageOne_schedule[studentInCompany[stu].company[com]][j] == "") {
                     stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                     sch_index.push(j)
+
+                    if (studentInCompany[stu].company[com] == "中華電信") {
+                        stageOne_schedule[studentInCompany[stu].company[com]][j + 1] = studentInCompany[stu].name
+                        sch_index.push(j + 1)
+                    }
                     break
                 }
             }
