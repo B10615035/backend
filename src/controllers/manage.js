@@ -89,12 +89,16 @@ router.get('/schedule/stage_one', async (req, res) => {
     const getStudent = (await student.findAll()).info
 
     var stageOne_schedule = new Map
+    var final_stageOne_schedule = new Map
 
-    for (let i = 0; i < 10; i++){
+    for (let i = 0; i < 10; i++) {
         stageOne_schedule[companyName(i)] = []
-        for (let j = 0; j < 24; j++)
+        final_stageOne_schedule[companyName(i)] = []
+        for (let j = 0; j < 24; j++) {
             stageOne_schedule[companyName(i)].push("")
-    }       
+            final_stageOne_schedule[companyName(i)].push("")
+        }
+    }
 
     var studentInCompany = []
     var companyWeight = new Map
@@ -156,6 +160,25 @@ router.get('/schedule/stage_one', async (req, res) => {
         else
             return 0
     })
+
+    final_stageOne_schedule["鈊象電子"][0] = "柯元豪"
+    final_stageOne_schedule["鈊象電子"][1] = "吳紹擎"
+    final_stageOne_schedule["鈊象電子"][2] = "賴俊霖"
+    final_stageOne_schedule["鈊象電子"][3] = "童暘修"
+    final_stageOne_schedule["鈊象電子"][4] = "温承勲"
+    final_stageOne_schedule["鈊象電子"][5] = "鐘良軒"
+    final_stageOne_schedule["鈊象電子"][6] = "彭浩峰"
+    final_stageOne_schedule["鈊象電子"][7] = "徐貫珉"
+    final_stageOne_schedule["鈊象電子"][8] = "章聰誠"
+    final_stageOne_schedule["鈊象電子"][9] = "陳冠樺"
+    final_stageOne_schedule["鈊象電子"][10] = "陳柏翰"
+    final_stageOne_schedule["鈊象電子"][11] = "黃柏翰"
+    final_stageOne_schedule["鈊象電子"][12] = "胡鎮東"
+    final_stageOne_schedule["鈊象電子"][13] = "許林斌"
+    final_stageOne_schedule["鈊象電子"][14] = "陳俊霖"
+    final_stageOne_schedule["鈊象電子"][15] = "陳昕璇"
+    final_stageOne_schedule["鈊象電子"][16] = "易可鈞"
+    final_stageOne_schedule["鈊象電子"][17] = "劉佑晉"
 
     for (let stu in studentInCompany) {
         var sch_index = []
@@ -247,8 +270,7 @@ router.get('/schedule/stage_one', async (req, res) => {
                 } else if (studentInCompany[stu].name == "劉佑晉") {
                     stageOne_schedule[studentInCompany[stu].company[com]][10] += studentInCompany[stu].name
                     sch_index.push(10)
-                }
-                else if (studentInCompany[stu].name == "陳冠樺") {
+                } else if (studentInCompany[stu].name == "陳冠樺") {
                     stageOne_schedule[studentInCompany[stu].company[com]][11] += studentInCompany[stu].name
                     sch_index.push(11)
                 }
@@ -259,14 +281,17 @@ router.get('/schedule/stage_one', async (req, res) => {
                 if (studentInCompany[stu].company[com] == "中華電信") {
                     if (!sch_index.includes(j) && !sch_index.includes(j + 1)  && stageOne_schedule[studentInCompany[stu].company[com]][j] == "") {
                         stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
+                        final_stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                         sch_index.push(j)
                         stageOne_schedule[studentInCompany[stu].company[com]][j + 1] = studentInCompany[stu].name
+                        final_stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                         sch_index.push(j + 1)
                         break
                     }
                 }
                 else if (!sch_index.includes(j) && stageOne_schedule[studentInCompany[stu].company[com]][j] == "") {
                     stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
+                    final_stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                     sch_index.push(j)
                     break
                 }
@@ -275,12 +300,12 @@ router.get('/schedule/stage_one', async (req, res) => {
 
         await student.update({name: studentInCompany[stu].name}, {stage_one: studentInCompany[stu].company, stage_one_index: sch_index})
         for(let i = 0; i < 10; i++){
-            await company.update({id: i}, {stage_one: stageOne_schedule[companyName(i)]})
+            await company.update({id: i}, {stage_one: final_stageOne_schedule[companyName(i)]})
         }
     }
 
     res.status(200).send({
-        info: stageOne_schedule
+        info: final_stageOne_schedule
     })
 })
 
