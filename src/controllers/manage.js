@@ -305,7 +305,7 @@ router.get('/schedule/stage_one', async (req, res) => {
     }
 
     res.status(200).send({
-        info: final_stageOne_schedule
+        info: stageOne_schedule
     })
 })
 
