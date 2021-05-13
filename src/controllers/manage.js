@@ -284,7 +284,7 @@ router.get('/schedule/stage_one', async (req, res) => {
                         final_stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                         sch_index.push(j)
                         stageOne_schedule[studentInCompany[stu].company[com]][j + 1] = studentInCompany[stu].name
-                        final_stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
+                        final_stageOne_schedule[studentInCompany[stu].company[com]][j + 1] = studentInCompany[stu].name
                         sch_index.push(j + 1)
                         break
                     }
