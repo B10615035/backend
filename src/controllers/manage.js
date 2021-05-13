@@ -253,7 +253,7 @@ router.get('/schedule/stage_one', async (req, res) => {
 
             for (let j = start; j < end; j++) {
                 if (studentInCompany[stu].company[com] == "中華電信") {
-                    if (!sch_index.includes(j + 1)) {
+                    if (!sch_index.includes(j) && !sch_index.includes(j + 1)) {
                         stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                         sch_index.push(j)
                         stageOne_schedule[studentInCompany[stu].company[com]][j + 1] = studentInCompany[stu].name
