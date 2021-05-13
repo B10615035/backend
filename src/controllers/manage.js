@@ -150,12 +150,12 @@ router.get('/schedule/stage_one', async (req, res) => {
         studentInCompany.push(temp)
     }
 
-    // studentInCompany = studentInCompany.sort((a, b) => {
-    //     if (a.company.length > b.company.length)
-    //         return -1
-    //     else
-    //         return 0
-    // })
+    studentInCompany = studentInCompany.sort((a, b) => {
+        if (a.company.length > b.company.length)
+            return -1
+        else
+            return 0
+    })
 
     for (let stu in studentInCompany) {
         var sch_index = []
@@ -180,7 +180,7 @@ router.get('/schedule/stage_one', async (req, res) => {
 
             if (studentInCompany[stu].company[com] == "研揚SDD1" && (studentInCompany[stu].name == "鄭國勤" || studentInCompany[stu].name == "陳彥寬"))
                 continue
-            if (studentInCompany[stu].company[com] == "研揚SDD2" && (studentInCompany[stu].name == "柯元豪" || studentInCompany[stu].name == "温承勲"))
+            if (studentInCompany[stu].company[com] == "研揚SDD2" && (studentInCompany[stu].name == "蕭子誼" || studentInCompany[stu].name == "陳柏均"))
                 continue
             if (studentInCompany[stu].company[com] == "研揚IOT" && (studentInCompany[stu].name == "詹凱宇" || studentInCompany[stu].name == "陳柏翰"))
                 continue
