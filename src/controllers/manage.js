@@ -173,12 +173,16 @@ router.get('/schedule/stage_one', async (req, res) => {
 
             if (studentInCompany[stu].company[com] == "研揚SDD1")
                 end = 12
+            if (studentInCompany[stu].company[com] == "研揚IOT")
+                end = 12
             if (studentInCompany[stu].company[com] == "研揚SDD2")
                 start = 12
 
             if (studentInCompany[stu].company[com] == "研揚SDD1" && (studentInCompany[stu].name == "鄭國勤" || studentInCompany[stu].name == "陳彥寬"))
                 continue
             if (studentInCompany[stu].company[com] == "研揚SDD2" && (studentInCompany[stu].name == "柯元豪" || studentInCompany[stu].name == "温承勲"))
+                continue
+            if (studentInCompany[stu].company[com] == "研揚IOT" && (studentInCompany[stu].name == "詹凱宇" || studentInCompany[stu].name == "陳柏翰"))
                 continue
 
             for (let j = start; j < end; j++) {
