@@ -150,12 +150,12 @@ router.get('/schedule/stage_one', async (req, res) => {
         studentInCompany.push(temp)
     }
 
-    studentInCompany = studentInCompany.sort((a, b) => {
-        if (a.company.length > b.company.length)
-            return -1
-        else
-            return 0
-    })
+    // studentInCompany = studentInCompany.sort((a, b) => {
+    //     if (a.company.length > b.company.length)
+    //         return -1
+    //     else
+    //         return 0
+    // })
 
     for (let stu in studentInCompany) {
         var sch_index = []
