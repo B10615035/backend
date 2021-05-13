@@ -191,9 +191,9 @@ router.get('/schedule/stage_one', async (req, res) => {
                     sch_index.push(0)
                 } else if (studentInCompany[stu].name == "賴俊霖") {
                     stageOne_schedule[studentInCompany[stu].company[com]][1] += studentInCompany[stu].name
-                    stageOne_schedule[studentInCompany[stu].company[com]][6] += studentInCompany[stu].name
+                    stageOne_schedule[studentInCompany[stu].company[com]][7] += studentInCompany[stu].name
                     sch_index.push(1)
-                    sch_index.push(6)
+                    sch_index.push(7)
                 } else if (studentInCompany[stu].name == "温承勲") {
                     stageOne_schedule[studentInCompany[stu].company[com]][2] += studentInCompany[stu].name
                     sch_index.push(2)
@@ -252,14 +252,17 @@ router.get('/schedule/stage_one', async (req, res) => {
             }
 
             for (let j = start; j < end; j++) {
+                if (studentInCompany[stu].company[com] == "中華電信" && !sch_index.includes(j + 1)) {
+                    stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
+                    sch_index.push(j)
+                    stageOne_schedule[studentInCompany[stu].company[com]][j + 1] = studentInCompany[stu].name
+                    sch_index.push(j + 1)
+                    break
+                }
+                else{
+                    continue
+                }
                 if (!sch_index.includes(j) && stageOne_schedule[studentInCompany[stu].company[com]][j] == "") {
-                    if (studentInCompany[stu].company[com] == "中華電信" && !sch_index.includes(j + 1)) {
-                        stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
-                        sch_index.push(j)
-                        stageOne_schedule[studentInCompany[stu].company[com]][j + 1] = studentInCompany[stu].name
-                        sch_index.push(j + 1)
-                        break
-                    }
                     stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                     sch_index.push(j)
 
