@@ -201,12 +201,21 @@ router.get('/schedule/stage_one', async (req, res) => {
             if (studentInCompany[stu].company[com] == "研揚SDD2")
                 start = 12
 
-            if (studentInCompany[stu].company[com] == "研揚SDD1" && (studentInCompany[stu].name == "鄭國勤" || studentInCompany[stu].name == "陳彥寬"))
+            if (studentInCompany[stu].company[com] == "研揚SDD1" && (studentInCompany[stu].name == "鄭國勤" || studentInCompany[stu].name == "陳彥寬")) {
+                final_stageOne_schedule['研揚SDD1'][12] = "鄭國勤"
+                final_stageOne_schedule['研揚SDD1'][13] = "陳彥寬"
                 continue
-            if (studentInCompany[stu].company[com] == "研揚SDD2" && (studentInCompany[stu].name == "蕭子誼" || studentInCompany[stu].name == "陳柏均"))
+            }
+            if (studentInCompany[stu].company[com] == "研揚SDD2" && (studentInCompany[stu].name == "蕭子誼" || studentInCompany[stu].name == "陳柏均")) {
+                final_stageOne_schedule['研揚SDD2'][10] = "蕭子誼"
+                final_stageOne_schedule['研揚SDD2'][11] = "陳柏均"
                 continue
-            if (studentInCompany[stu].company[com] == "研揚IOT" && (studentInCompany[stu].name == "詹凱宇" || studentInCompany[stu].name == "陳柏翰"))
+            }
+            if (studentInCompany[stu].company[com] == "研揚IOT" && (studentInCompany[stu].name == "詹凱宇" || studentInCompany[stu].name == "陳柏翰")) {
+                final_stageOne_schedule['研揚IOT'][12] = "詹凱宇"
+                final_stageOne_schedule['研揚IOT'][13] = "陳柏翰"
                 continue
+            }
 
             if (studentInCompany[stu].company[com] == "鈊象電子") {
                 if (studentInCompany[stu].name == "吳紹擎") {
