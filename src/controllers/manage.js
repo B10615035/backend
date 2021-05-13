@@ -248,6 +248,10 @@ router.get('/schedule/stage_one', async (req, res) => {
                     stageOne_schedule[studentInCompany[stu].company[com]][10] += studentInCompany[stu].name
                     sch_index.push(10)
                 }
+                else if (studentInCompany[stu].name == "陳冠樺") {
+                    stageOne_schedule[studentInCompany[stu].company[com]][11] += studentInCompany[stu].name
+                    sch_index.push(11)
+                }
                 continue
             }
 
