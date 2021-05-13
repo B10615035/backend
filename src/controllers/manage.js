@@ -67,9 +67,11 @@ router.get('/schedule/test', async (req, res) => {
     companyBeChosen["邑富"] = []
     companyBeChosen["利凌企業"] = []
     companyBeChosen["英業達"] = []
-    companyBeChosen["研揚科技"] = []
+    companyBeChosen["研揚IOT"] = []
     companyBeChosen["鈊象電子"] = []
     companyBeChosen["緯創資通"] = []
+    companyBeChosen["研揚SDD1"] = []
+    companyBeChosen["研揚SDD2"] = []
 
     for (let stu in getStudent) {
         for (let i in getStudent[stu].company) {
@@ -88,8 +90,11 @@ router.get('/schedule/stage_one', async (req, res) => {
 
     var stageOne_schedule = new Map
 
-    for(let i = 0; i < 8; i++)
-        stageOne_schedule[companyName(i)] = [[], [], [], [], [], [], [], []]
+    for (let i = 0; i < 10; i++){
+        stageOne_schedule[companyName(i)] = []
+        for (let j = 0; j < 24; j++)
+            stageOne_schedule[companyName(i)].push("")
+    }       
 
     var studentInCompany = []
     var companyWeight = new Map
@@ -99,9 +104,11 @@ router.get('/schedule/stage_one', async (req, res) => {
     companyWeight["邑富"] = 10
     companyWeight["利凌企業"] = 29
     companyWeight["英業達"] = 18
-    companyWeight["研揚科技"] = 30
+    companyWeight["研揚IOT"] = 15
     companyWeight["鈊象電子"] = 13
     companyWeight["緯創資通"] = 19
+    companyWeight["研揚SDD1"] = 14
+    companyWeight["研揚SDD2"] = 14
     
     // for(let stu in getStudent){
     //     var temp = {name: getStudent[stu].name, company: []}
@@ -160,25 +167,29 @@ router.get('/schedule/stage_one', async (req, res) => {
                 return 0
         })
 
-        for (let com in studentInCompany[stu].company)
-            for (let j = 0; j < 8; j++) {
-                var limit = 3
-                if(j == 0 && studentInCompany[stu].company[com] == "研揚科技")
-                    limit = 4
-                if (!sch_index.includes(j) && stageOne_schedule[studentInCompany[stu].company[com]][j].length < limit) {
-                    stageOne_schedule[studentInCompany[stu].company[com]][j].push(studentInCompany[stu].name)
+        for (let com in studentInCompany[stu].company) {
+            var start = 0;
+            var end = 24;
+
+            if (studentInCompany[stu].company[com] == "研揚SDD1")
+                end = 12
+            if (studentInCompany[stu].company[com] == "研揚SDD2")
+                start = 12
+
+            for (let j = start; j < end; j++) {
+                if (!sch_index.includes(j) && stageOne_schedule[studentInCompany[stu].company[com]][j] == "") {
+                    stageOne_schedule[studentInCompany[stu].company[com]][j] = studentInCompany[stu].name
                     sch_index.push(j)
                     break
                 }
             }
-        
+        }
+
         await student.update({name: studentInCompany[stu].name}, {stage_one: studentInCompany[stu].company, stage_one_index: sch_index})
-        for(let i = 0; i < 8; i++){
+        for(let i = 0; i < 10; i++){
             await company.update({id: i}, {stage_one: stageOne_schedule[companyName(i)]})
         }
     }
-
-    console.log(stageOne_schedule)
 
     res.status(200).send({
         info: stageOne_schedule
