@@ -22,6 +22,7 @@ class authService {
     }
 
     async companyLogin(data) {
+        console.log(data)
         const findUser = await this.company.findOne({name: data.name, id: data.id})
         if (!findUser)
             return new HttpStatus(400, 'This company is not exits.')
