@@ -367,7 +367,7 @@ router.get("/schedule/stage_two", authMiddleware, async (req, res) => {
     console.log(score)
 
     res.status(200).send({
-        info: score
+        info: [getStudent, getCompany]
     })
 })
 
