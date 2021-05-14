@@ -318,6 +318,59 @@ router.get('/schedule/stage_one', async (req, res) => {
 })
 
 
+router.get("/schedule/stage_two", authMiddleware, async (req, res) => {
+    const getCompany = (await company.findAll()).info
+    const getStudent = (await student.findAll()).info
+
+    var finalReslut = new Map
+
+    finalReslut["中華電信"] = []
+    finalReslut["台達電子"] = []
+    finalReslut["邑富"] = []
+    finalReslut["利凌企業"] = []
+    finalReslut["英業達"] = []
+    finalReslut["研揚IOT"] = []
+    finalReslut["鈊象電子"] = []
+    finalReslut["緯創資通"] = []
+    finalReslut["研揚SDD1"] = []
+    finalReslut["研揚SDD2"] = []
+
+    var limit = new Map
+    limit["中華電信"] = 5
+    limit["台達電子"] = 2
+    limit["邑富"] = 1
+    limit["利凌企業"] = 4
+    limit["英業達"] = 4
+    limit["研揚IOT"] = 1
+    limit["鈊象電子"] = 4
+    limit["緯創資通"] = 5
+    limit["研揚SDD1"] = 1
+    limit["研揚SDD2"] = 1
+
+    var finish = 8
+    var score = new Map
+
+    for(let stu in getStudent){
+        score[getStudent[stu].name] = new Map
+        for(let com in getCompany){
+            score[getStudent[stu].name][getCompany[com].name] = []
+        }
+    }
+
+    for(let stu in getStudent){
+        score[getStudent[stu].name] = new Map
+        for(let com in getCompany){
+            score[getStudent[stu].name][getCompany[com].name] = []
+        }
+    }
+
+    console.log(score)
+
+    res.status(200).send({
+        info: score
+    })
+})
+
 
 router.post("/student/", authMiddleware, async (req, res) => {
     const createUser = await student.create(req.body)
