@@ -5,6 +5,7 @@ const companySchema = new Schema({
         type:String,
         require: true,
     },
+    id:String,
     students:[String],
     stage_one:[String],
     willing_name:[String],
